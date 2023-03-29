@@ -70,18 +70,26 @@ namespace E_Services_Portal.Services
                     return user;
                 }
 
-                else if (!IsNumeric(user.PhoneNumber))
+                if (string.IsNullOrEmpty(user.PhoneNumber))
+                {
+                    errors.Add("Please enter a phone number.");
+                    user.StatusCode = "1009";
+                    user.StatusDescription = describer.Describe("1009");
+                    return user;
+                }
+                else if (!long.TryParse(user.PhoneNumber, out _))
                 {
                     errors.Add("Phone number should be numeric.");
                     user.StatusCode = "1008";
                     user.StatusDescription = describer.Describe("1008");
                     return user;
                 }
+                user.StatusCode = "0000";
 
-                
+
             }
 
-             static bool IsValidEmail(string email)
+            static bool IsValidEmail(string email)
             {
                 try
                 {

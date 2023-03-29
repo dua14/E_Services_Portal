@@ -57,9 +57,9 @@ namespace E_Services_Portal.Controllers
                 ViewData["Error"] = ReturnResponse.ElementAt(0).StatusDescription;
           
             }
-           /* finally { 
+            finally { 
             Logger.Close();
-            }*/
+            }
             return View(ReturnResponse.ElementAt(0));
         }
    

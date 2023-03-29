@@ -1,6 +1,8 @@
 ﻿using E_Services_Portal.Models;
+using E_Services_Portal.Repository;
 using E_Services_Portal.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace E_Services_Portal.Controllers
 {
@@ -26,7 +28,19 @@ namespace E_Services_Portal.Controllers
                 ReturnResponse = signUpService.SignUp(user);
                 if (ReturnResponse != null && ReturnResponse.StatusCode.Equals("0000"))
                 {
-                    return RedirectToAction("Index", "DashBoard", ReturnResponse);
+                    if (ReturnResponse.is_admin) {
+                        LoginRepository loginRepository=new LoginRepository();
+                        List<UserModel> userModels = loginRepository.GetAllUsers();
+                        var userListJson = JsonSerializer.Serialize(userModels);
+
+                        // Store the JSON string in TempData
+                        TempData["UserList"] = userListJson;
+                        return RedirectToAction("AdminDashBoard", "DashBoard");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "DashBoard", ReturnResponse);
+                    }
                 }
                 else
                 {

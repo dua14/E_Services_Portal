@@ -17,8 +17,7 @@ namespace E_Services_Portal.Services
              
                 foreach (UserModel u in userModels)
                 {
-                    if (u.username == user.username
-                        //&& VerifyPassword(user.password,u.password)
+                    if (u.username == user.username && VerifyPassword(user.password,u.password)
                         )
                     {
 
@@ -29,7 +28,7 @@ namespace E_Services_Portal.Services
                         ReturnResponse.username = u.username;
                         ReturnResponse.Email = u.Email;
                         ReturnResponse.PhoneNumber = u.PhoneNumber;
-                        ReturnResponse.is_admin = true;
+                        ReturnResponse.is_admin = u.is_admin;
                         Logger.Log("GetAllUsers " + JsonConvert.SerializeObject(ReturnResponse));
                         if (ReturnResponse.is_admin)
                         {

@@ -1,4 +1,8 @@
-﻿namespace E_Services_Portal
+﻿using static Devart.Common.Utils;
+using System.Diagnostics.Metrics;
+using System.Numerics;
+
+namespace E_Services_Portal
 {
    
     public class Messgaes
@@ -16,7 +20,8 @@
                 { "1005","Password is required."},
                      { "1006","Password must be alphanumeric."},
                 { "1007","Email is not valid."},
-                { "1008","Phone number should be numeric."}
+                { "1008","Phone number should be numeric."},
+                { "1009","Please enter a phone number."}
             // add more codes and descriptions as needed
         };
         }
