@@ -1,0 +1,22 @@
+﻿@model E_Services_Portal.Models.UserModel
+
+<h2>EServices Portal</h2> 
+
+<form asp-controller="Login" asp-action="UserLogin" method="post">
+    <div>
+        <label asp-for="username">username:</label>
+        <input asp-for="username" />
+    </div>
+    <div></div>
+    <div></div>
+    <div>
+        <label asp-for="password">Password:</label>
+        <input asp-for="password" type="password" />
+    </div>
+    <button type="submit">Log in</button>
+</form>
+@Html.ActionLink("New to portal Signup", "Signup", "Signup", null, new { fragment = "target-div" })
+@if (ViewData["Error"] != null)
+{
+    <p>@ViewData["Error"]</p>
+}

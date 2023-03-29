@@ -1,0 +1,32 @@
+﻿@model E_Services_Portal.Models.UserModel
+<h2>Signup</h2>
+
+@using (Html.BeginForm("Signup", "Signup", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.username)
+        @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.password)
+        @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Signup</button>
+}@if (ViewData["Error"] != null)
+{
+    <p>@ViewData["Error"]</p>
+}

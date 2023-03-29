@@ -1,0 +1,22 @@
+﻿@model E_Services_Portal.Models.UserModel
+
+<h2>EServices Portal</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+
+            <h1>Dashboard</h1>
+        </div>
+        <div class="col-1">
+            @Html.ActionLink("Logout", "UserLogin", "Login", null, new { fragment = "target-div" })
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">User Profile</div>
+        <div class="card-body">
+            <h5 class="card-title">@Model.username</h5>
+            <p class="card-text">@Model.Email</p>
+            <p class="card-text">@Model.PhoneNumber</p>
+        </div>
+    </div>
+</div>
